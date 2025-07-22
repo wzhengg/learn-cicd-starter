@@ -35,3 +35,6 @@ jobs:
       - name: Build docker image and push to Google Artifact Registry
         run: gcloud builds submit --tag us-east5-docker.pkg.dev/notely-466701/notely-ar-repo/notely:latest
 
+      - name: Deploy to Google Cloud Run
+        run: gcloud run deploy notely --image us-east5-docker.pkg.dev/notely-466701/notely-ar-repo/notely:latest --region us-east5 --allow-unauthenticated --project notely-466701 --max-instances=4
+
